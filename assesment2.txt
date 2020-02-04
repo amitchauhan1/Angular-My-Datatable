@@ -1,0 +1,37 @@
+1.Write your name here
+amit
+
+2.Write a JavaScript function that reverse a number.
+console.log( 
+    +prompt("Enter a value").split("").reverse().join("") 
+)
+
+3.Write a JavaScript Program to merge two arrays and store it in some other variable.
+const array1 = ["Vijendra","Singh"];
+const array2 = ["Singh", "Shakya"];
+const array3 = [...array1, ...array2];
+
+4.Write a Javascript function that accepts n Number of arguments and console all the passed arguments.
+function data(...args) {
+  console.log(args);
+}
+data('a', 'b', 'c')
+
+5.Write a JavaScript program to list the properties of a JavaScript object.
+objects={
+    name: 'aaa',
+    add: 'valsad'
+}
+for (var key in objects) {
+    if (Object.prototype.hasOwnProperty.call(objects, key)) {
+        var val = objects[key];
+        console.log(val)
+    }
+}
+
+
+const obj1 = { firstName: 'Foo', age: 22 };
+const obj2 = { lastName: 'Bar', gender: 'M' };
+const newObj = { ...obj1, ...obj2, planet: 'Earth' };
+console.log(newObj)
+//{ firstName: 'Foo', age: 22, lastName: 'Bar', gender: 'M', planet: 'Earth' }

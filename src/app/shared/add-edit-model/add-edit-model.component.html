@@ -1,0 +1,67 @@
+<style [src]="./add-edit-model.component.scss"></style>
+<div class="form-style-9">
+    <form [formGroup]="empForm" (ngSubmit)="onSubmit()">
+        <ul>
+            <li>
+                <div *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)" class="alert alert-danger">
+                    <div *ngIf="f.name.errors.required">
+                        Name is required.
+                    </div>
+                </div>
+                <input type="text" formControlName="name" class="field-style field-split align-left"
+                    placeholder="name" />
+
+                <input type="text" formControlName="email" class="field-style field-split align-left"
+                    placeholder="email" />
+            </li>
+
+            <li>
+                <input type="text" formControlName="mobile" class="field-style field-split align-left"
+                    placeholder="mobile" />
+            </li>
+            <li>
+                <h6>Gender</h6>
+
+                <input type="radio" formControlName="gender" name="gender" value="male" checked> Male &nbsp;&nbsp;&nbsp;
+                <input type="radio" formControlName="gender" name="gender" value="female"> Female &nbsp;&nbsp;&nbsp;
+                <input type="radio" formControlName="gender" name="gender" value="other"> Other
+
+            </li>
+
+            <li>
+
+                <select formControlName="department" class="field-style field-split align-left">
+                    <option *ngFor="let item of dept" value="{{item}}">{{item}}</option>
+                </select>
+
+                <input type="date" formControlName="hiredate" class="field-style field-split align-left"
+                    placeholder="hiredate" />
+            </li>
+
+            <li>
+                <input type="checkbox" formControlName="permanent" class="field-style field-split align-left"
+                    value="true" />Permanent
+            </li>
+            <li>
+                    <span (click)="addNewAddress()" style="cursor:pointer;" class="fa fa-plus">Add new
+                        Address</span><br><br>
+                    <div formArrayName="address">
+                        <div *ngFor="let comp of empForm.controls.address.controls; let i=index">
+                            <h6>address {{i+1}}: </h6>
+                            <span (click)="deleteAddress(i)" style="cursor:pointer;" class="fa fa-minus"></span>
+                            <div [formGroupName]="i">
+                                <input formControlName="city" placeholder="city"
+                                    class="field-style field-split align-left" />
+                                <input formControlName="zip" placeholder="zip" class="field-style field-split align-left" />
+                            </div>
+                        </div>
+                    </div>
+    
+                </li>
+            <li>
+                <button type="submit" class="field-style">Save</button>
+                <button class="field-style" type="button" (click)="onClear()">Clear</button>
+            </li>
+        </ul>
+    </form>
+</div>
