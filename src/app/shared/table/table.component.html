@@ -6,11 +6,6 @@
   <thead class="thead-dark">
     <tr>
     <tr>
-      <th scope="col" [class.active]="order === 'id'" (click)="setOrder('id')">
-        ID
-        <span [hidden]="reverse">▼</span>
-        <span [hidden]="!reverse">▲</span>
-      </th>
       <th scope="col" [class.active]="order === 'name'" (click)="setOrder('name')">
         Full-Name<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
       </th>
@@ -41,8 +36,7 @@
   </thead>
   <tbody>
     <tr
-      *ngFor="let emp of datas | async | sorting: order: reverse | filter: {id: searchText ,name: searchText, email: searchText, mobile: searchText, address:searchText, gender:searchText, department:searchText, hiredate:searchText, permanent:searchText}; let i=index;">
-      <th scope="row">{{emp.id}}</th>
+      *ngFor="let emp of datas | async | sorting: order: reverse | filter: {name: searchText, email: searchText, mobile: searchText, address:searchText, gender:searchText, department:searchText, hiredate:searchText, permanent:searchText}; let i=index;">
       <td>{{emp.name}}</td>
       <td>{{emp.email}}</td>
       <td>{{emp.mobile}}</td>

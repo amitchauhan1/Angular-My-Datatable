@@ -29,9 +29,45 @@ for (var key in objects) {
     }
 }
 
+6.Define a object of your choice and write a program to check whether a property in objects exists or not.
 
-const obj1 = { firstName: 'Foo', age: 22 };
-const obj2 = { lastName: 'Bar', gender: 'M' };
-const newObj = { ...obj1, ...obj2, planet: 'Earth' };
-console.log(newObj)
-//{ firstName: 'Foo', age: 22, lastName: 'Bar', gender: 'M', planet: 'Earth' }
+
+7.Write a Javascript code to replace property values of a obj1 with newObj values.
+obj1 = { 
+                name: "Abc",
+                address: "Valsad",
+                email: "abc@email.com"
+             }
+
+newObj = { 
+		  name: "Xyz",
+                  address:"Surat",
+                  email: "abc@email.com"
+               }
+    console.log({...obj1,...newObj});
+
+
+
+8.Write a Javascript code to unpack values from an array (of your choice) and objects (of your choice) into some variables.
+let a, b;
+[a, b] = [10, 20];
+
+console.log(a);
+// expected output: 10
+
+console.log(b);
+// expected output: 20
+
+9.Write a Javascript code to swap two variables using ES6 feature.
+let a, b;
+[a, b] = [10, 20];
+console.log(a);
+[a, b] = [b, a];
+console.log(a);
+
+10.Constants are block-scoped variables.
+true
+
+11.The statement "var" declares a block-scoped variable.
+false
+

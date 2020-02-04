@@ -26,7 +26,7 @@ export class AddEditModelComponent implements OnInit {
     this.empId = this.route.snapshot.paramMap.get('id');
   }
   empForm = this.fb.group({
-    name: ['', Validators.required],
+    name: ['', [Validators.required, Validators.minLength(4)]],
     email: ['', Validators.required],
     mobile: ['', Validators.required],
     gender: ['', Validators.required],
@@ -45,7 +45,6 @@ export class AddEditModelComponent implements OnInit {
     if (this.empId) {
       this.api.getEmp(this.empId).subscribe((data => {
         this.empData = data;
-        console.log(this.empData);
         this.empForm.setValue({
           name: this.empData.name,
           email: this.empData.email,
@@ -62,8 +61,7 @@ export class AddEditModelComponent implements OnInit {
       }));
     }
   }
-  f() { return this.empForm.controls; }
-  name() { return this.empForm.get('name'); }
+
   addNewAddress() {
     const control = this.empForm.controls.address as FormArray;
     control.push(
@@ -75,7 +73,7 @@ export class AddEditModelComponent implements OnInit {
   }
 
   deleteAddress(index) {
-    let control = <FormArray>this.empForm.controls.address;
+    const control = this.empForm.controls.address as FormArray;
     control.removeAt(index);
   }
 
@@ -93,4 +91,6 @@ export class AddEditModelComponent implements OnInit {
     // clear errors and reset ticket fields
     this.submitted = false;
   }
+
+  name() { return this.empForm.get('name'); }
 }
